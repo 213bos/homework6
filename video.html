@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>JavaScript Video Controls</title>
-	<script src = ""></script>
+	<script src = "js/video.js"></script>
 	<style>
 	video{
 		width: 90%;
@@ -13,15 +13,22 @@
 		filter: grayscale(100%);
 	}
 
-	button{
+	.play:before{
 		margin-bottom: 5px;
+		content: url('img/play.png');
 	}
 
+	.pause:before{
+		margin-bottom: 5px;
+		content: url('img/pause.png');
+	}
+	/*got this from https://stackoverflow.com/questions/6668577/using-before-css-pseudo-element-to-add-image-to-modal*/
+
 	/*Use CSS before property to display the image before the text in the buttons*/
-	
+
 </style>
 </head>
-<body onload = "getVid()"> 
+<body onload = "getVid()">
 <main>
 	<h1>JavaScript Video Controls</h1>
 	<button onclick="playVid()" type="button" class = "play">Play Video</button>
@@ -30,7 +37,6 @@
 	<button onclick="increaseSpeed()" type="button">Speed Up</button><br>
 	<button onclick="skipAhead()" type="button">Skip Ahead</button><br>
 
-	
 
 	<figure>
 	<video id="myVideo">
@@ -52,5 +58,5 @@
 
 	<p>Video courtesy of <a href="https://www.bigbuckbunny.org/" target="_blank">Big Buck Bunny</a>.</p>
 </main>
-</body> 
+</body>
 </html>

@@ -1,52 +1,68 @@
 var video;
+// var volume;
 
-function getVid(){
-	video = document.querySelector("#myVideo"); 
+function getVid() {
+	video = document.querySelector("#myVideo");
 }
 
-function playVid() { 
-
+function playVid() {
 	console.log("Play Video");
-} 
+	video.play();
+}
 
-function pauseVid() { 
-
+function pauseVid() {
 	console.log("Pause Video");
-} 
+	video.pause();
+}
 
-function decreaseSpeed() { 
-
-  	console.log("Speed is "+ );
-} 
+function decreaseSpeed() {
+	video.playbackRate *= .8;
+  console.log("Speed is "+ video.playbackRate);
+}
 
 function increaseSpeed() {
+	video.playbackRate *= 1.25;
+	console.log("Speed is "+ video.playbackRate);
+}
 
-	console.log("Speed is "+ );
-} 
-
-function skipAhead() {
-
-	console.log("Current location is "+ );
-} 
-
-function mute() { 
-  	
-  		console.log("Unmuted");
-  	
-      	console.log("Muted");
+function mute() {
+	if (video.muted == true){
+		video.muted = false;
+		console.log("Change volume to unmuted");
+		document.getElementById("mute").innerHTML = "Mute";
+	}
+	else{
+		video.muted = true;
+		console.log("Change volume to muted");
+		document.getElementById("mute").innerHTML = "Unmute";
+	}
 }
 
 function changeVolume() {
-;	console.log("Volume is ");
+	slider = document.getElementById("volumeSlider");
+	video.volume = slider.value/100;
+	volume.innerHTML = slider.value + "%";
+	console.log("Volume is "+ volume.innerHTML);
 }
-       
 
-function gray() { 
-
-	console.log("In grayscale")
+function gray() {
+	video.classList.add("grayscale");
+	console.log("In grayscale");
 }
 
 function color() {
+	video.classList.remove("grayscale");
+	console.log("In color")
+}
 
-	console.log("In color") 
+function skipAhead() {
+	videoDuration = video.duration;
+	videoTime = video.currentTime + 60;
+	if (videoTime > videoDuration){
+		video.currentTime = 0;
+	}
+	else{
+		video.currentTime += 60;
+	}
+	console.log("Current location is "+ video.currentTime);
 }
