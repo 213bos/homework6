@@ -8,6 +8,9 @@ function getVid() {
 function playVid() {
 	console.log("Play Video");
 	video.play();
+	volume = document.getElementById("volume");
+	volume.innerHTML = video.volume * 100 + "%";
+	console.log(volume);
 }
 
 function pauseVid() {
